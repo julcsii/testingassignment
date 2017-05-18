@@ -62,9 +62,17 @@ public class HomePageLoggedIn {
         return courseTitle.getText();
     }
 
-    public boolean isEnrolled() {
-        driver.findElement(By.xpath("//*[@id=\"rendered-content\"]/div/div/div[2]/div/div/div[1]/div/div/div/div[1]/div[2]/div/li/a[1]")).click();
-        WebElement title = driver.findElement(By.xpath("//*[@id=\"rendered-content\"]/div/div/div[2]/div/div/div[2]/main/div[1]/div/p"));
-        return !title.getText().contains("don't");
+    public String getTitle(){
+        return driver.getTitle();
+    }
+
+    public void logout() {
+        returnHome();
+        driver.findElement(By.xpath("//*[@id=\"c-ph-right-nav\"]/ul/li[8]/div/a")).click();
+        driver.findElement(By.xpath("//*[@id=\"c-ph-aai-dropdown\"]/li[6]/a")).click();
+    }
+
+    public boolean hasLoginButton() {
+        return driver.findElement(By.xpath("//*[@id=\"c-ph-right-nav\"]/ul/li[5]/a")).isDisplayed();
     }
 }

@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -20,7 +21,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Main {
     WebDriver driver;
-    Wait<WebDriver> wait;;
+    Wait<WebDriver> wait;
     HomePageNotLoggedIn mainPageWithoutLogin;
     LoginPopUp loginPopup;
     HomePageLoggedIn mainPage;
@@ -56,12 +57,6 @@ public class Main {
 
     @Test
     public void testCourseEnrollment(){
-        /*
-        if (mainPage.isEnrolled()){
-            System.out.println("Already enrolled to course in scope of test, please un-enroll first.");
-            return;
-        }
-        */
         mainPage.goToCatalog();
         String category = mainPage.selectCategory("Arts and Humanities");
         String courseName = mainPage.selectCourse("Buddhism and Modern Psychology");
@@ -71,5 +66,18 @@ public class Main {
         assertTrue("InCorrect course name after enrolling in.",mainPage.getCourseName().equals(courseName));
     }
 
+    @Test
+    public void testHomePageTitle(){
+        mainPage.returnHome();
+        String title = mainPage.getTitle();
+
+        assertEquals(title, "Coursera | Online Courses From Top Universities. Join for Free");
+    }
+
+    @Test
+    public void testLogout(){
+        mainPage.logout();
+        assertTrue(mainPage.hasLoginButton());
+    }
 
 }
