@@ -21,7 +21,9 @@ public class HomePageNotLoggedIn {
 
     public LoginPopUp openLoginPopup(){
         driver.get("https://www.coursera.org/");
-        driver.findElement(By.xpath("//*[@id=\"c-ph-right-nav\"]/ul/li[4]")).click();
+
+        driver.findElement(By.linkText("Log In")).click();
+
 
         return new LoginPopUp(driver);
     }

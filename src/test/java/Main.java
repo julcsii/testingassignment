@@ -49,7 +49,6 @@ public class Main {
         }
     }
 
-    //Sometimes login fails because another element at the navbar appears and that messes up my xpath.
     @Test
     public void testLogin(){
         assertTrue("InCorrect username after logged in.",mainPage.getUsername().equals("Teszt"));
@@ -61,7 +60,6 @@ public class Main {
         String category = mainPage.selectCategory("Arts and Humanities");
         String courseName = mainPage.selectCourse("Buddhism and Modern Psychology");
         mainPage.enroll();
-        mainPage.returnHome();
 
         assertTrue("InCorrect course name after enrolling in.",mainPage.getCourseName().equals(courseName));
     }

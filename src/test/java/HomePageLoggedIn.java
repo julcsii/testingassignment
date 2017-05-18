@@ -13,7 +13,7 @@ public class HomePageLoggedIn {
     Wait<WebDriver> wait;
 
     By toAccountLocator = By.className("c-ph-username");
-    By toCourseNameLocator = By.xpath("//*[@id=\"rendered-content\"]/div/div/div[2]/div/div/div[2]/main/div[1]/ul/li/section/div[2]/div[2]/a/div[1]/h4");
+    By toCourseNameLocator = By.xpath("//*[@id=\"rendered-content\"]/div/div/div/div/div[1]/div[2]/main/div/div/div/main/div[1]/h1");
 
     public HomePageLoggedIn(WebDriver driver) {
         this.driver = driver;
